@@ -1,44 +1,28 @@
-import { ChevronDownIcon } from "@radix-ui/react-icons";
-import { table } from "console";
-import { Button } from "./components/Button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./components/ui/select";
+import { Button } from "./components/ui/button";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from "./components/Card";
-import { Input } from "./components/Input";
+} from "./components/ui/card";
+import { Input } from "./components/ui/input";
 import {
   Table,
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
-} from "./components/Table";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuCheckboxItem,
-} from "@radix-ui/react-dropdown-menu";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectGroup,
-  SelectLabel,
-  SelectItem,
-} from "@radix-ui/react-select";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "@radix-ui/react-popover";
+} from "./components/ui/table";
 
 const rows = [{}, {}, {}, {}, {}, {}, {}];
 
@@ -53,8 +37,19 @@ const SearchTable: React.FC = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center py-4">
+          <div className="flex items-center py-4 justify-between">
             <Input placeholder="Search for country..." className="max-w-sm" />
+
+            <Select>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Filter by language" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="light">Light</SelectItem>
+                <SelectItem value="dark">Dark</SelectItem>
+                <SelectItem value="system">System</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <Table>
@@ -72,12 +67,12 @@ const SearchTable: React.FC = () => {
             <TableBody>
               {rows.map((row, i) => (
                 <TableRow key={i}>
-                  <TableCell className="font-medium">one</TableCell>
-                  <TableCell>two</TableCell>
-                  <TableCell>three</TableCell>
-                  <TableCell>four</TableCell>
-                  <TableCell>five</TableCell>
-                  <TableCell>six</TableCell>
+                  <TableCell className="text-center">one</TableCell>
+                  <TableCell className="text-center">two</TableCell>
+                  <TableCell className="text-center">three</TableCell>
+                  <TableCell className="text-center">four</TableCell>
+                  <TableCell className="text-center">five</TableCell>
+                  <TableCell className="text-center">six</TableCell>
                   <TableCell className="text-right">seven</TableCell>
                 </TableRow>
               ))}
